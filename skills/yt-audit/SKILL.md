@@ -12,7 +12,7 @@ An audit that lists twenty problems is a way of avoiding the one that matters. T
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
+1. Read `.agents/youtube/voice.md` or `~/.gemini/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
    on camera, the words they never use, who they are talking to, what they will not claim. If it
    does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
    and write the file. A script in the wrong voice is worse than no script, because they have to
@@ -23,12 +23,12 @@ An audit that lists twenty problems is a way of avoiding the one that matters. T
 ## What to look at, in this order
 
 1. **The last ten titles, as a set.** Read them as a list, the way the channel page shows them. Do
-   they promise different things? Run them through `../yt-package/title.py`. A channel where every
+   they promise different things? Run them through `python skills/yt-package/title.py`. A channel where every
    title is the same shape has a format problem, not a title problem.
 2. **The thumbnails, at feed size.** Shrink them. What survives? If three of them are unreadable at
    that size, that is the fix and nothing else matters yet.
 3. **The first fifteen seconds of the three most recent.** Transcribe them and score with
-   `../yt-script/hookscore.py`. This is where most channels lose.
+   `python skills/yt-script/hookscore.py`. This is where most channels lose.
 4. **Upload rhythm.** Not frequency - CONSISTENCY. Six videos in one week and then nothing for a
    month is worse than one a fortnight forever.
 5. **The retention shape**, if they can export it. `/yt-retention`.

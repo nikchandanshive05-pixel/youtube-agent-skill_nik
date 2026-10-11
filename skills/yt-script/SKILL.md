@@ -15,13 +15,13 @@ One idea into a script somebody finishes.
 Two tools live in this folder and both actually run. Use them. Do not eyeball the hook.
 
 ```bash
-python3 hookscore.py hooks.txt              # rank your hook options
-python3 hookscore.py --hook "one line"      # score a single one
+python skills/yt-script/hookscore.py hooks.txt              # rank your hook options
+python skills/yt-script/hookscore.py --hook "one line"      # score a single one
 ```
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
+1. Read `.agents/youtube/voice.md` or `~/.gemini/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
    on camera, the words they never use, who they are talking to, what they will not claim. If it
    does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
    and write the file. A script in the wrong voice is worse than no script, because they have to

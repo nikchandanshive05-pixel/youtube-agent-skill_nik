@@ -1,0 +1,11 @@
+{
+  "name": "youtube-agent",
+  "displayName": "YouTube Agent",
+  "version": "1.0.0",
+  "description": "Eleven Antigravity skills that run a YouTube channel: hook scoring off 21 formulas, title & thumbnail linter, edit decision list, retention diagnostics, shorts cutter, and virality engine.",
+  "suggestedPrompts": [
+    "Write a YouTube script for an idea with scored hooks",
+    "Lint my YouTube video title and thumbnail pairing",
+    "Analyze my video transcript to generate an edit decision list"
+  ]
+}

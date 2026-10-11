@@ -9,7 +9,7 @@ description: >-
 # yt-chapters
 
 ```bash
-python3 chapters.py transcript.srt --target 8
+python skills/yt-chapters/chapters.py transcript.srt --target 8
 ```
 
 ## The rules, which are not optional
@@ -25,6 +25,7 @@ The tool checks all three and tells you when a list is invalid rather than letti
 
 ## Retitle every line
 
+Check `.agents/youtube/voice.md` or `~/.gemini/youtube/voice.md` for creator tone and style.
 `chapters.py` finds the BOUNDARIES well - it scores the pauses you actually took by how much the
 vocabulary shifts across them. The titles it emits are the topic words, and they are a draft. A
 chapter called "Thumbnails Titles Packaging" is a placeholder. Rewrite each one as the promise of

@@ -13,13 +13,13 @@ The title and the thumbnail are ONE unit. Writing them separately is why most pa
 thumbnail repeats the title, and half the click surface says the same thing twice.
 
 ```bash
-python3 title.py --title "..." --thumb "AI RAN IT"
-python3 title.py titles.txt            # one per line, ranked
+python skills/yt-package/title.py --title "..." --thumb "AI RAN IT"
+python skills/yt-package/title.py titles.txt            # one per line, ranked
 ```
 
 ## Before you write
 
-1. Read `~/.claude/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
+1. Read `.agents/youtube/voice.md` or `~/.gemini/youtube/voice.md` if it exists. That is the user's voice profile: how they talk
    on camera, the words they never use, who they are talking to, what they will not claim. If it
    does not exist, ask for **three of their own videos**, read or transcribe them, infer the voice,
    and write the file. A script in the wrong voice is worse than no script, because they have to
@@ -39,7 +39,7 @@ python3 title.py titles.txt            # one per line, ranked
 
 ## Write ten, keep two
 
-Generate ten titles, run them all through `title.py`, show the user the top three with their scores
+Generate ten titles, run them all through `python skills/yt-package/title.py`, show the user the top three with their scores
 and the specific issue on each. For the winner, write the thumbnail brief: the expression, the
 framing, the three words, and what the background has to do to hold contrast at feed size.
 

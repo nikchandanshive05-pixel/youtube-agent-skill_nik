@@ -1,109 +1,108 @@
-# The YouTube agent skill
+# The YouTube Agent Skill Pack for Google Antigravity
 
-Eleven Claude skills that run a YouTube channel. Free, MIT, no signup, no API key, nothing to
-connect.
+Eleven Google Antigravity skills that run a YouTube channel. Free, MIT, no signup, no external API keys, zero third-party pip dependencies.
 
-One of them writes your script off 21 hook formulas and scores the hook before you waste a take on
-it. One lints the title and the thumbnail as a single pairing, because writing them separately is
-why half of your click surface says the same thing twice. One reads your audience-retention export
-and tells you the exact second people left and what you were saying when they did. One turns a
-transcript into an edit decision list. One finds the Shorts already hiding inside a long video. One
-goes and finds what is working in your niche and ranks it by how far each video beat its own
-channel, not by how big the channel is.
+One writes your script off 21 hook formulas and scores the hook before you waste a take on it. One lints the title and thumbnail as a single pairing, eliminating duplicate wording across your click surface. One reads your YouTube Studio audience-retention CSV export and tells you the exact second people left and what you were saying when they did. One turns a transcript into an edit decision list (EDL). One finds the Shorts already hiding inside a long video. One uncovers what is working in your niche and ranks it by how far each video beat its own channel's median, not by channel size.
 
 **Nothing gets published until you do it.** These skills write. You upload.
 
-## Install
+---
 
-Paste this into Claude:
+## Installation for Google Antigravity
 
-```
-https://github.com/Jakeschincariol/youtube-agent-skill
-
-Install this skill, then confirm /yt-script works.
-```
-
-Or do it yourself, in Claude Code:
+### Option 1: Automatic Project-Local Use
+Clone this repository and open the folder in Antigravity. Antigravity automatically discovers and activates all 11 skills via `.agents/skills.json`:
 
 ```bash
-git clone https://github.com/Jakeschincariol/youtube-agent-skill.git
-cp -r youtube-agent-skill/skills/yt-* ~/.claude/skills/
+git clone https://github.com/nikchandanshive05-pixel/youtube-agent-skill_nik.git
 ```
 
-Or as a plugin:
+### Option 2: One-Click Global Plugin Installation
+To make all 11 skills available globally across every project and workspace in Antigravity:
 
+**On Windows (PowerShell):**
+```powershell
+.\install.ps1
 ```
-/plugin marketplace add Jakeschincariol/youtube-agent-skill
-/plugin install youtube-agent
+
+**On macOS / Linux:**
+```bash
+chmod +x install.sh
+./install.sh
 ```
 
-Project-local instead of global: copy the same folders into your repo's `.claude/skills/`. No Claude
-Code at all? Paste any single `SKILL.md` at the top of a chat and it runs as a mode. You lose the six
-Python tools, which is most of the point of `/yt-script`, `/yt-retention` and `/yt-edit`, but the
-rest works.
+*(Or simply copy or clone this repo directly into `~/.gemini/config/plugins/youtube-agent` and restart Antigravity).*
 
-Then spend ten minutes on [`templates/voice.md`](templates/voice.md). Copy it to
-`~/.claude/youtube/voice.md` and fill it in, or send Claude three of your own videos and say "write
-my voice.md from these". Every skill reads that file. It matters more here than anywhere else,
-because you have to say the words out loud.
+---
 
-## The eleven
+## Setting Up Your Voice Profile (`voice.md`)
 
-| command | what it does |
+Spend ten minutes on [`templates/voice.md`](templates/voice.md). Copy it to:
+- **Global**: `~/.gemini/youtube/voice.md`
+- **Or Project-local**: `.agents/youtube/voice.md`
+
+Fill it in with your speaking style, words you never use, words you do use, and what you will not claim. Alternatively, paste three of your video transcripts into Antigravity and say: *"write my voice.md from these"*.
+
+Every skill reads this file before writing to ensure scripts, replies, and titles sound authentically like you.
+
+---
+
+## The Eleven Skills
+
+Trigger these skills via slash command or conversational requests in Antigravity:
+
+| Slash Command | What It Does |
 | --- | --- |
-| `/yt-script` | One idea into a script. Five hooks off [21 formulas](skills/yt-script/hooks.json), scored, then the spoken script with the retention beats marked. |
-| `/yt-package` | Title and thumbnail as one pairing, linted for truncation, duplication and vagueness. |
-| `/yt-edit` | A transcript into an edit decision list: dead air, filler cues, retakes, with timecodes. |
-| `/yt-comment` | The comment section triaged into four piles, then replies in your voice. Says which one to pin. |
-| `/yt-plan` | A week that fits the hours you actually have. One anchor, one cheap one, three Shorts. |
-| `/yt-viral` | What is working in your niche, ranked by multiple over each channel's own median. |
-| `/yt-retention` | Your retention export read properly: hook leak, the cliffs, the slide, and what to change. |
-| `/yt-shorts` | The Shorts already inside a long video, with a new first line written for each. |
-| `/yt-seo` | The description, the tags that are worth having, and the three queries this should win. |
-| `/yt-chapters` | Chapters from a transcript, validated against YouTube's own rules so they render. |
-| `/yt-audit` | The whole channel, ending in ONE fix rather than twenty. |
+| `/yt-script` | One idea into a full script. Five hooks off [21 formulas](skills/yt-script/hooks.json), scored, then the spoken script with `[ON SCREEN: ...]` visual beats and runtime estimates. |
+| `/yt-package` | Title and thumbnail as one pairing, linted for truncation (mobile 40-char, desktop 60-char), repetition, vagueness, and emphasis. |
+| `/yt-edit` | A transcript into an edit decision list (EDL): dead air, filler cues ("um", "basically"), and retakes with timecodes. |
+| `/yt-retention` | Reads YouTube Studio retention CSVs: hook leak (<30s), cliffs (steep dips), and pacing slide. |
+| `/yt-shorts` | Finds self-contained 20–55s moments inside long videos, writing fresh opening hooks, on-screen text, and loop points. |
+| `/yt-viral` | Ranks niche videos by outlier multiple over each channel's median views, identifying proven structural formats. |
+| `/yt-plan` | Builds a weekly upload calendar tailored to your actual available hours (1 anchor, 1 cheap video, 3 Shorts). |
+| `/yt-seo` | Writes descriptions, chapters, and disambiguation tags aimed at queries real people type. |
+| `/yt-chapters` | Chapters from a transcript, validated against YouTube's rendering rules (00:00 start, min 3 chapters, min 10s each). |
+| `/yt-comment` | Comment section triage (questions, corrections, praise, bait) and voice-calibrated replies under 30 words. |
+| `/yt-audit` | Audits the whole channel down to **ONE** high-impact fix to focus on this week. |
 
-## The six tools
+---
 
-Every one of these runs on a clean Python 3 with no dependencies. They are the reason the skills are
-not just prompts.
+## The Six Standalone Python Engines
+
+Every tool runs on clean Python 3 with standard library modules only (zero `pip` packages required):
 
 ```bash
-python3 skills/yt-script/hookscore.py --hook "one line"        # 5-property hook panel
-python3 skills/yt-package/title.py --title "..." --thumb "..." # title + thumbnail linter
-python3 skills/yt-edit/deadair.py transcript.srt               # edit decision list
-python3 skills/yt-chapters/chapters.py transcript.srt          # validated chapters
-python3 skills/yt-retention/retention.py retention.csv         # where they left, and why
-python3 skills/yt-viral/swipe.py collected.json --min 2.0      # outliers by own-channel multiple
+# 5-property hook scoring panel (SPECIFICITY, ADDRESS, STAKES, CURIOSITY, BREVITY)
+python skills/yt-script/hookscore.py --hook "Why 99% of creators fail before day 30"
+
+# Title + thumbnail pairing linter
+python skills/yt-package/title.py --title "I Tested 50 Hooks" --thumb "50 HOOKS TESTED"
+
+# Edit decision list (EDL) from SRT, VTT, or Whisper JSON
+python skills/yt-edit/deadair.py transcript.srt
+
+# Validated YouTube chapters
+python skills/yt-chapters/chapters.py transcript.srt --target 8
+
+# Audience retention leak report
+python skills/yt-retention/retention.py retention.csv --duration 600
+
+# Channel-relative virality outlier ranker
+python skills/yt-viral/swipe.py collected.json --min 2.0
 ```
 
-## The fine print
+---
 
-The part most packs leave out.
+## The Fine Print
 
-**It does not publish.** YouTube's Data API would allow it with your own OAuth, which makes this
-pack different from the LinkedIn and Instagram ones, where posting is not available at all. It is
-still not built here: every skill ends in a block you copy and a question — ship it, or change it?
-Anything that claims to run your channel unattended should be read with that distinction in mind.
+- **It does not publish unattended.** Antigravity writes and formats. You upload and hit publish. Every skill output ends in a copyable block and the question: **ship it, or change it?**
+- **`hookscore.py` is a heuristic, not a predictor.** Calibrated against 74 short-form hooks to catch weak, vague, or self-answering openings. A low score means look again; a high score is not a guarantee.
+- **`swipe.py` reads, it does not scrape.** Operates on public video metadata listings, never requiring your login credentials or session tokens.
+- **Tags barely matter.** This pack tells you the truth instead of generating useless walls of tags.
+- **Nothing invents numbers.** If a skill needs a figure it does not have, it asks you or writes without it.
 
-**`hookscore.py` is a heuristic, not a predictor.** The panel was built and calibrated against 74
-real short-form hooks (the first 15 seconds of auto-captions, top-8 and bottom-8 by views across
-five channels). It separates deliberately bad hooks from real ones well. It separates a given
-creator's hits from their own misses barely at all. A low score is a reason to look again; a high
-score is not a promise.
+---
 
-**The formula classifier is about the words, not the result.** When `/yt-viral` says a title used
-The Statistic, that is a judgement about the title you can see, not a claim about why the video got
-its views.
+## License
 
-**`/yt-viral` reads, it does not scrape.** Public listings only. It never logs in as you and never
-touches your credentials.
-
-**Tags barely matter** and this pack says so instead of selling you a tag generator.
-
-**Nothing invents a number.** If a skill wants a figure it does not have, it asks you for it or
-writes the line without it.
-
-## Licence
-
-MIT. Use it, change it, ship it.
+MIT. Use it, customize it, ship it.

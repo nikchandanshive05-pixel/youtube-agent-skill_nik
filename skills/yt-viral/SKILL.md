@@ -13,7 +13,7 @@ Raw view counts rank channel size, not ideas. This ranks by **multiple over each
 median**, which is the only version of the question that is about the video.
 
 ```bash
-python3 swipe.py collected.json --min 2.0
+python skills/yt-viral/swipe.py collected.json --min 2.0
 ```
 
 ## Collecting the input
@@ -37,7 +37,7 @@ should say so when you present it.
 
 What to hand back: the top five with their multiples, the formula each used, and the ONE structural
 thing they share. Then the harder line - which of those the user could actually make this week, in
-their voice, with what they have.
+their voice (check `.agents/youtube/voice.md` or `~/.gemini/youtube/voice.md`), with what they have.
 
 ## The gate
 
